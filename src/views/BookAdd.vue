@@ -1,37 +1,39 @@
 <template>
     <div class="page ">
       <h4 class="text-center">Vui lòng nhập thông tin</h4>
-      <ContactForm :contact="contact" @submit:contact="addContact" />
+      <BookForm :book="book" @submit:book="addBook" />
       <p>{{ message }}</p>
     </div>
   </template>
   
   <script>
-  import ContactForm from "@/components/ContactForm.vue";
-  import ContactService from "@/services/contact.service";
+  import BookForm from "@/components/BookForm.vue";
+  import BookService from "@/services/book.service";
   
   export default {
     components: {
-      ContactForm,
+      BookForm,
     },
     data() {
       return {
-        contact: {
-          name: "",
-          email: "",
-          address: "",
-          phone: "",
+        book: {
+          book_name: "",
+          book_price: "",
+          book_quantity: "",
+          book_publishing_year: "",
+          book_publishing_company: "",
+          book_author: "",
           favorite: false,
         },
         message: "",
       };
     },
     methods: {
-      async addContact(contactData) {
+      async addBook(bookData) {
         try {
-          await ContactService.create(contactData);
+          await BookService.create(bookData);
           this.message = "Liên hệ đã được thêm thành công.";
-          this.$router.push({ name: 'contactbook' });
+          this.$router.push({ name: 'bookbook' });
         } catch (error) {
           console.error(error);
           this.message = "Đã xảy ra lỗi khi thêm liên hệ.";
