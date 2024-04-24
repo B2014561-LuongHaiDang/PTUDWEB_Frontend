@@ -32,6 +32,11 @@
             <Field name="book_author" type="text" class="form-control" v-model="bookLocal.book_author" />
             <ErrorMessage name="book_author" class="error-feedback" />
         </div>
+        <div class="form-group">
+            <label for="book_author">Hình ảnh</label>
+            <Field name="book_img" type="text" class="form-control" v-model="bookLocal.book_img" />
+            <ErrorMessage name="book_img" class="error-feedback" />
+        </div>
         <div class="form-group" style="text-align: center;">
             <button class="btn btn-primary ">Đăng ký</button>
             <button v-if="bookLocal._id" type="button" class="ml-2 btn btn-danger" @click="deleteBook">
@@ -63,18 +68,18 @@ export default {
             book_price: yup
                 .number()
                 .required("Giá phải có giá trị.")
-                .min(1, "Giá phải ít nhất 1 ký tự.")
-                .max(50, "Giá có nhiều nhất 50 ký tự."),
+                .min(1, "Giá phải ít nhất 1 ký tự."),
+                
             book_quantity: yup
                 .number()
                 .required("Số lượng phải có giá trị.")
                 .min(1, "Số lượng phải ít nhất 1 ký tự.")
-                .max(50, "Số lượng có nhiều nhất 50 ký tự."),
+                .max(1000, "Số lượng có nhiều nhất 50 ký tự."),
             book_publishing_year: yup
                 .number()
                 .required("Năm xuất bản phải có giá trị.")
                 .min(1, "Năm xuất bản phải ít nhất 1 ký tự.")
-                .max(50, "Năm xuất bản có nhiều nhất 50 ký tự."),
+                .max(2024, "Năm xuất bản có nhiều nhất 50 ký tự."),
             book_publishing_company: yup
                 .string()
                 .required("Nhà xuất bản phải có giá trị.")

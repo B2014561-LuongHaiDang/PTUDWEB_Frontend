@@ -31,5 +31,9 @@ export default {
             <strong>Tác giả:</strong>
             {{ book.book_author }}
         </div>
+        <div class="p-1">
+            <strong>Hình ảnh:</strong>
+            {{ book.book_img }}
+        </div>
     </div>
 </template>

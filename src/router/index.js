@@ -38,7 +38,7 @@ const routes = [
         path: "/books/:id",
         name: "book.edit",
         component: () => import("@/views/BookEdit.vue"),
-        
+        props: true
     },
 ];
 const router = createRouter({

@@ -17,8 +17,9 @@
     data() {
       return {
         contact: {
+          holot: "",
           name: "",
-          email: "",
+          ngaysinh: "",
           address: "",
           phone: "",
           favorite: false,

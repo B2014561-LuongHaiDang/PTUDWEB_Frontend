@@ -1,13 +1,15 @@
 <template>
-    <div v-if="book" class="page">
+    <div class="page">
         <h4>Hiệu chỉnh Liên hệ</h4>
         <BookForm :book="book" @submit:book="updateBook" @delete:book="deleteBook" />
         <p>{{ message }}</p>
     </div>
 </template>
+
 <script>
 import BookForm from "@/components/BookForm.vue";
 import BookService from "@/services/book.service";
+
 export default {
     components: {
         BookForm,
@@ -27,7 +29,6 @@ export default {
                 this.book = await BookService.get(id);
             } catch (error) {
                 console.log(error);
-                // Chuyển sang trang NotFound đồng thời giữ cho URL không đổi
                 this.$router.push({
                     name: "notfound",
                     params: {

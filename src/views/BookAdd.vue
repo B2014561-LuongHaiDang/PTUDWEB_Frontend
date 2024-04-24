@@ -23,6 +23,8 @@
           book_publishing_year: "",
           book_publishing_company: "",
           book_author: "",
+          book_img: "",
+          book_borrow: 1,
           favorite: false,
         },
         message: "",

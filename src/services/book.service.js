@@ -21,5 +21,8 @@ class BookService {
     async delete(id) {
         return (await this.api.delete(`/${id}`)).data;
     }
+    async findByName(book_name) {
+        return (await this.api.findByName(`/${book_name}`)).data;
+    }
 }
 export default new BookService();
