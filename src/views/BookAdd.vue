@@ -1,6 +1,6 @@
 <template>
     <div class="page ">
-      <h4 class="text-center">Vui lòng nhập thông tin</h4>
+      <h4 class="text-center">Vui lòng nhập thông tin sách</h4>
       <BookForm :book="book" @submit:book="addBook" />
       <p>{{ message }}</p>
     </div>

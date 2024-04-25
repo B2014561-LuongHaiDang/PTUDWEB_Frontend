@@ -1,6 +1,6 @@
 import createApiClient from "./api.service";
-class ContactService {
-    constructor(baseUrl = "/api/contacts") {
+class StaffService {
+    constructor(baseUrl = "/api/staffs") {
         this.api = createApiClient(baseUrl);
     }
     async getAll() {
@@ -10,7 +10,7 @@ class ContactService {
         return (await this.api.post("/", data)).data;
     }
     async login(username,password) {
-        return (await this.api.post("/login", {name:username, password })).data;
+        return (await this.api.post("/login", {hotennv:username, password })).data;
     }
     async deleteAll() {
         return (await this.api.delete("/")).data;
@@ -24,5 +24,8 @@ class ContactService {
     async delete(id) {
         return (await this.api.delete(`/${id}`)).data;
     }
+    async findByName(hotennv) {
+        return (await this.api.findByName(`/${hotennv}`)).data;
+    }
 }
-export default new ContactService();
+export default new StaffService();

@@ -1,0 +1,28 @@
+import createApiClient from "./api.service";
+class BillService {
+    constructor(baseUrl = "/api/bills") {
+        this.api = createApiClient(baseUrl);
+    }
+    async getAll() {
+        return (await this.api.get("/")).data;
+    }
+    async create(data) {
+        return (await this.api.post("/", data)).data;
+    }
+    // async deleteAll() {
+    //     return (await this.api.delete("/")).data;
+    // }
+    // async get(id) {
+    //     return (await this.api.get(`/${id}`)).data;
+    // }
+    async update(id, data) {
+        return (await this.api.put(`/${id}`, data)).data;
+    }
+    // async delete(id) {
+    //     return (await this.api.delete(`/${id}`)).data;
+    // }
+    // async findByName(book_name) {
+    //     return (await this.api.findByName(`/${book_name}`)).data;
+    // }
+}
+export default new BillService();

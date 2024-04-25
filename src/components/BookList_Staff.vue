@@ -18,7 +18,7 @@ export default {
         <div class="col-3 p-1" style="height: 300px;" v-for="(book, index) in books" :key="book._id"
             :class="{ active: index === activeIndex }" @click="updateActiveIndex(index)">
             <div class="card pt-3 d-flex justify-content-center align-items-center" style="height: 100%;">
-                <router-link :to="{ name: 'book.detail', params: { id: book._id } }">
+                <router-link :to="{ name: 'book.edit', params: { id: book._id } }">
                     <img :src="book.book_img" class="card-img-top" alt="..."
                         style="height: 150px; width: 120px; object-fit: cover;">
                 </router-link>

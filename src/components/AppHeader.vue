@@ -3,7 +3,7 @@
     <div class="mr-auto navbar-nav">
       <li class="nav-item">
         <router-link :to="{ name: 'bookbook' }" class="nav-link">
-          <h5 class="text-dark">
+          <h5 class="text-dark" style="margin-top: 10px;">
             Trang chủ
           </h5>
         </router-link>
@@ -17,24 +17,51 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-        <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
-        <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-        <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+        <router-link :to="{ name: 'contact.profile' }">
+          <li><a href="#" class="nav-link px-2 link-secondary text-dark">Thông tin cá nhân</a></li>
+        </router-link>
+        <template v-if="user">
+          
+            <li class="nav-link px-2 link-secondary text-dark" @click="logout" style="margin-top: 2px;">
+                Tên người dùng:
+            </li>
+            <li><router-link :to="{ name: 'contact.login' }" class="nav-link px-2 link-secondary text-dark" @click="logout"
+                style="margin-top: 2px; font-weight: bold;">
+                {{ user.name }}{{ user.hotennv }}
+              </router-link>
+            </li>
+          
+        </template>
+        <template v-if="!user">
+          <router-link :to="{ name: 'contact.login' }">
+            <li><a href="#" class="nav-link px-2 link-body-emphasis text-dark" style="margin-top: 2px;">Đăng nhập</a>
+            </li>
+          </router-link>
+        </template>
+
       </ul>
 
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Dropdown link
-        </a>
-
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-      </div>
     </div>
   </nav>
 </template>
+
+<script>
+import router from '@/router';
+
+export default {
+  methods: {
+    logout() {
+      localStorage.removeItem('user');
+      this.$router.push({ name: 'contact.login' }).then(() => {
+        window.location.reload();
+      });
+    }
+  },
+  data() {
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    return {
+      user
+    };
+  },
+};
+</script>

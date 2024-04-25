@@ -6,7 +6,7 @@
         <div class="row">
         <div class="mt-3 col-md-6">
             <h4 class="text-center">
-                Danh bạ
+                Danh sách người dùng
                 <i class="fas fa-address-book"></i>
             </h4>
             <ContactList v-if="filteredContactsCount > 0" :contacts="filteredContacts"
@@ -27,7 +27,7 @@
         </div>
         <div class="mt-3 col-md-6">
             <div v-if="activeContact">
-                <h4>
+                <h4 class="ml-3">
                     Chi tiết Liên hệ
                     <i class="fas fa-address-card"></i>
                 </h4>
@@ -36,7 +36,7 @@
                 name: 'contact.edit',
                 params: { id: activeContact._id },
             }">
-                    <span class="mt-2 badge badge-warning">
+                    <span class="mt-2 ml-3 badge badge-warning">
                         <i class="fas fa-edit"></i> Hiệu chỉnh</span>
                 </router-link>
             </div>

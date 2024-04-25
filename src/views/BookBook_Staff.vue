@@ -9,27 +9,29 @@
                     Danh sách sản phẩm
                     
                 </h4>
-                <BookList v-if="filteredBooksCount > 0" :books="filteredBooks" v-model:activeIndex="activeIndex" />
+                <div class="mt-3 row justify-content-around align-items-center">
+                    <!-- Hiển thị nút "Thêm mới" chỉ khi người dùng có vai trò là admin -->
+                    <router-link :to="{ name: 'book.add' }" class="btn btn-sm btn-success">
+                        Thêm mới
+                    </router-link>
+        
+                    <router-link :to="{ name: 'contactbook' }" class="btn btn-sm btn-warning">
+                        Chỉnh sửa thông tin
+                    </router-link>
+        
+                    <!-- Hiển thị nút "Xóa tất cả" chỉ khi người dùng có vai trò là admin -->
+                    <button class="btn btn-sm btn-danger" @click="removeAllBooks">
+                        Xóa tất cả
+                    </button>
+                </div>
+                <BookListStaff v-if="filteredBooksCount > 0" :books="filteredBooks" v-model:activeIndex="activeIndex" />
                 <p v-else>Không có liên hệ nào.</p>
                 <!-- <div v-if="filteredBooksCount > 0" >
                     <CardBook :books="filteredBooks" v-model:activeIndex="activeIndex"/>
                 </div> -->
-                
+
             </div>
-            <div class="mt-3 col-md-6">
-                <div v-if="activeBook">
-                    <h4>
-                        Chi tiết Liên hệ
-                        <i class="fas fa-address-card"></i>
-                    </h4>
-                    <!-- <BookCard :book="activeBook" />
-                    <router-link :to="{ name: 'book.edit', params: { id: activeBook._id } }">
-                        <span class="mt-2 badge badge-warning">
-                            <i class="fas fa-edit"></i> Hiệu chỉnh
-                        </span>
-                    </router-link> -->
-                </div>
-            </div>
+
         </div>
     </div>
 </template>
@@ -38,7 +40,7 @@
 import BookCard from "@/components/BookCard.vue";
 import CardBook from "@/components/CardBook.vue";
 import BookSearch from "@/components/BookSearch.vue";
-import BookList from "@/components/BookList.vue";
+import BookListStaff from "@/components/BookList_Staff.vue";
 import BookService from "@/services/book.service";
 
 
@@ -47,7 +49,7 @@ export default {
     components: {
         BookCard,
         BookSearch,
-        BookList,
+        BookListStaff,
         CardBook,
     },
     data() {
